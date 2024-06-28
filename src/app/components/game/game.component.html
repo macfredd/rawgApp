@@ -1,0 +1,10 @@
+<!-- set backgound image to the entire row using game.background_image-->
+<div class="row">
+    <img [src]="game?.background_image">
+    <div class="col-md-12">
+        <h1>{{ game?.name }}</h1>
+        <div [innerHTML]="game?.description"></div>
+    </div>
+</div>
+
+<p>metacritic: {{game?.metacritic}}</p>
