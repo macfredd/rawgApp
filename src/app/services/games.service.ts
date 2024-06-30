@@ -24,4 +24,8 @@ export class GamesService {
   getGameAdditions(id: number) {
     return this.httpClient.get(`${environment.apiUrl}/games/${id}/additions`);
   }
+
+  getGameSeries(id: number) {
+    return this.httpClient.get(`${environment.apiUrl}/games/${id}/game-series`);
+  }
 }
