@@ -10,14 +10,22 @@ export class GamesService {
   constructor(private httpClient: HttpClient) { }
 
   getGames() {
-    return this.httpClient.get(`${environment.apiUrl}/games?key=${environment.apiKey}`);
+    return this.httpClient.get(`${environment.apiUrl}/games`);
   }
 
   getGameById(id: number) {
-    return this.httpClient.get(`${environment.apiUrl}/games/${id}?key=${environment.apiKey}`);
+    return this.httpClient.get(`${environment.apiUrl}/games/${id}`);
   }
 
   getGamePhotos(id: number) {
-    return this.httpClient.get(`${environment.apiUrl}/games/${id}/screenshots?key=${environment.apiKey}`);
+    return this.httpClient.get(`${environment.apiUrl}/games/${id}/screenshots`);
+  }
+
+  getGameAdditions(id: number) {
+    return this.httpClient.get(`${environment.apiUrl}/games/${id}/additions`);
+  }
+
+  getGameSeries(id: number) {
+    return this.httpClient.get(`${environment.apiUrl}/games/${id}/game-series`);
   }
 }
