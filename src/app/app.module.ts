@@ -19,9 +19,9 @@ import { addApiKeyInterceptor } from './interceptors/add-api-key.interceptor';
     SharedModule
   ],
   providers: [
+    provideHttpClient(withInterceptorsFromDi()),
     provideHttpClient(
-      withInterceptors([addApiKeyInterceptor]),
-      withInterceptorsFromDi()
+      withInterceptors([addApiKeyInterceptor])
     )
   ],
   bootstrap: [AppComponent]
