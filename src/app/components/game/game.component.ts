@@ -29,4 +29,14 @@ export class GameComponent {
       this.game = game;
     });
   }
+
+  get shortDescription() {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = this.game.description;
+    const firstParagraph = tempDiv.querySelector('p')?.textContent;
+
+    tempDiv.remove();
+
+    return firstParagraph ? firstParagraph.slice(0, 300) : '';
+  }
 }

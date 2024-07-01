@@ -1,10 +1,41 @@
-<!-- set backgound image to the entire row using game.background_image-->
-<div class="row">
-    <img [src]="game?.background_image">
-    <div class="col-md-12">
-        <h1>{{ game?.name }}</h1>
-        <div [innerHTML]="game?.description"></div>
+
+<!-- ========== Start Navbar for internal Game Page ========== -->
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{game.website}}" target="_blank" >Website</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{game.metacritic_url}}" target="_blank">Metacritic</a>
+        </li>
+      </ul>
     </div>
+</nav>
+<!-- ========== End Navbar for internal Game Page ========== -->
+
+<div class="container-fluid p-0">
+  <div class="row no-gutters vh-100">
+    <div class="col-12 position-relative"
+         [ngStyle]="{'background-image': 'linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0)), url(' + game.background_image + ')'}"
+         style="background-size: cover; background-position: center; background-repeat: no-repeat; transition: background-image 0.5s;">
+      <div class="d-flex align-items-center justify-content-start h-100">
+        <div class="col-xl-3 col-lg-4 col-md-6 card p-5 card-gradient">
+          <div class="card-body">
+            <h5 class="card-title h1 text-dark">{{ game.name }}</h5>
+            <p class="card-text lead text-dark text-wrap">{{ shortDescription }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<p>metacritic: {{game?.metacritic}}</p>
+
+
+
+
