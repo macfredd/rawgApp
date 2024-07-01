@@ -5,8 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { addApiKeyInterceptor } from './interceptors/add-api-key.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -19,9 +20,9 @@ import { addApiKeyInterceptor } from './interceptors/add-api-key.interceptor';
     SharedModule
   ],
   providers: [
+    provideHttpClient(withInterceptorsFromDi()),
     provideHttpClient(
-      withInterceptors([addApiKeyInterceptor]),
-      withInterceptorsFromDi()
+      withInterceptors([addApiKeyInterceptor])
     )
   ],
   bootstrap: [AppComponent]
