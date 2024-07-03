@@ -11,7 +11,10 @@
           <a class="nav-link" href="{{game.website}}" target="_blank" >Website</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{game.metacritic_url}}" target="_blank">Metacritic</a>
+          <a class="nav-link" href="{{game.metacritic_url}}" target="_blank" >Metacritic</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{game.reddit_url}}" target="_blank">Reddit</a>
         </li>
       </ul>
     </div>
@@ -42,10 +45,18 @@
 <section class="bg-dark text-light text-center p-10">
   <div class="d-sm-flex align-items-center justify-content-between">
     <div>
-        <div class="h5 p-4" [innerHTML]="fullDescription" ></div>
+      <div class="h5 p-4" [innerHTML]="fullDescription" ></div>
     </div>
   </div>
-</div>
+</section>
+
+<section class="bg-dark p-5">
+  <div class="row">
+    <div class="col-6">
+      <h1><span class="text-warning text-center">Ratings</span></h1>
+      <app-bar-h [data]="ratings"></app-bar-h>
+    </div>
+  </div>
 </section>
 
 <section class="p-2 p-lg-0 pt-lg-5 text-center text-sm-start">

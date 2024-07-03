@@ -7,11 +7,12 @@ import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { addApiKeyInterceptor } from './interceptors/add-api-key.interceptor';
+import { BarHComponent } from './components/graphs/bar-h/bar-h.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

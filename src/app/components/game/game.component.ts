@@ -11,6 +11,7 @@ export class GameComponent {
 
   public game: any = {};
   public screenshots: any[] = [];
+  public ratings: any[] = [];
 
   constructor(private gamesService: GamesService,
     private router: Router,
@@ -29,13 +30,19 @@ export class GameComponent {
   getGameById(id: number) {
     this.gamesService.getGameById(id).subscribe((game: any) => {
       this.game = game;
+      this.ratings = game.ratings.map((rating: any) => {
+        return {
+          name: rating.title.charAt(0).toUpperCase() + rating.title.slice(1),
+          value: rating.count
+          };
+        }
+      );
     });
   }
 
   getGameScreenshots(id: number) {
     this.gamesService.getGamePhotos(id).subscribe((screenshots: any) => {
       this.screenshots = screenshots.results;
-      console.log(this.screenshots);
     });
   }
 
