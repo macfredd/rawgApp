@@ -9,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class GameComponent {
 
-  public game?: any;
+  public game: any = {};
+  public screenshots: any[] = [];
 
   constructor(private gamesService: GamesService,
     private router: Router,
@@ -21,12 +22,20 @@ export class GameComponent {
     this.activateRoute.params.subscribe(params => {
       const gameId = params['id'];
       this.getGameById(gameId);
+      this.getGameScreenshots(gameId);
     });
   }
 
   getGameById(id: number) {
     this.gamesService.getGameById(id).subscribe((game: any) => {
       this.game = game;
+    });
+  }
+
+  getGameScreenshots(id: number) {
+    this.gamesService.getGamePhotos(id).subscribe((screenshots: any) => {
+      this.screenshots = screenshots.results;
+      console.log(this.screenshots);
     });
   }
 
@@ -37,6 +46,44 @@ export class GameComponent {
 
     tempDiv.remove();
 
-    return firstParagraph ? firstParagraph.slice(0, 300) : '';
+    return firstParagraph ? firstParagraph.slice(0, 300) + '...' : '';
   }
+
+  get fullDescription() {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = this.game.description;
+    const paragraphs = Array.from(tempDiv.querySelectorAll('p'));
+
+    let fullDescription = '';
+    let wordCount = 0;
+    const maxWords = 66;
+
+    for (const p of paragraphs) {
+      if ( p.textContent) {
+        const words = p.textContent.split(/\s+/);
+        for (const word of words) {
+            if (wordCount < maxWords) {
+                fullDescription += word + ' ';
+                wordCount++;
+            } else {
+                break;
+            }
+        }
+        if (wordCount >= maxWords) {
+            break;
+        }
+        fullDescription += '\n';
+      }
+    }
+
+    fullDescription = fullDescription.trim();
+
+    // Añadir el enlace al final
+    fullDescription += ` <a href="${this.game.website}" target="_blank">More info</a>`;
+
+    tempDiv.remove();
+
+    return fullDescription;
+}
+
 }
