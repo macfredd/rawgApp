@@ -12,6 +12,7 @@ export class GameComponent {
   public game: any = {};
   public screenshots: any[] = [];
   public ratings: any[] = [];
+  public platforms: any[] = [];
 
   constructor(private gamesService: GamesService,
     private router: Router,
@@ -37,6 +38,10 @@ export class GameComponent {
           };
         }
       );
+
+      console.log(game.platforms);
+
+      this.platforms = game.platforms;
     });
   }
 

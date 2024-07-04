@@ -21,7 +21,7 @@ export class BarHComponent {
     yAxisLabel: string = this.yLabel;
     showYAxisLabel: boolean = true;
     xAxisLabel: string = this.xLabel;
-    colorScheme = 'aqua';
+    colorScheme = 'nightLights';
 
     constructor() {
     Object.assign(this, { single: this.data });
