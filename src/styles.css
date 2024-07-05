@@ -20,3 +20,6 @@
     background-position: center;
   }
 
+.pre-wrap {
+    white-space: pre-wrap;
+}

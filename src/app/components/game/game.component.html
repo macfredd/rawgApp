@@ -59,16 +59,20 @@
     <div class="col-6">
       <h1><span class="text-warning text-center">Platforms</span></h1>
       <div class="row">
-        @for(platform of platforms; track platform.id) {
-          <div class="col-3 bg-secondary card p-2 m-2 text-light">
-            <div class="card-body">
-              <h5 class="card-title">{{ platform.platform.name }}</h5>
-              <p class="card-text">{{ platform.released_at }}</p>
-            </div>
+        <div *ngFor="let platform of platforms; trackBy: trackByFn" class="col-3 bg-secondary card p-2 m-2 text-light">
+          <div class="card-body">
+            <h5 class="card-title">{{ platform.platform.name }}</h5>
+            <p class="card-text">{{ platform.released_at }}</p>
+            @if( platform.requirements.minimum) {
+              <button class="btn btn-warning btn-lg"
+                      data-toggle="modal" [attr.data-target]="'#' + platform.platform.slug">
+                <i class="bi bi-laptop"></i>
+              </button>
+              <app-modal [id]="platform.platform.slug" [title]="platform.platform.name" [data]="platform.requirements.minimum"></app-modal>
+            }
           </div>
-        }
+        </div>
       </div>
-
     </div>
   </div>
 </section>

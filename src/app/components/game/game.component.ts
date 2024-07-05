@@ -96,6 +96,9 @@ export class GameComponent {
     tempDiv.remove();
 
     return fullDescription;
-}
+  }
 
+  trackByFn(index: number, item: any): number {
+    return item.platform.id;
+  }
 }
