@@ -23,3 +23,9 @@
 .pre-wrap {
     white-space: pre-wrap;
 }
+
+.plataform-icon {
+    width: 40px!important;
+    height: 40p0x!important;
+    margin-right: 10px!important;
+}

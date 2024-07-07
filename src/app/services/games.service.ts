@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { map } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -46,16 +46,16 @@ export class GamesService {
   }
 
   /**
-   * Get the best games of the last year
+   * Get the best games by date range
    * @param minRating Minimum rating of the games
    * @param from Start date
    * @param to End date
-   * @returns Best games of the last year
+   * @returns Best games of the date range
    */
-  getBestGamesLastYear(minRating: number,  from: string, to: string) {
-    return this.httpClient.get(`${environment.apiUrl}/games?dates=${from},${to}&ordering=-rating`)
-          .pipe(
-            map((games: any) => games.results.filter((game: any) => game.rating >= minRating))
-          );
+  getBestGamesByDateRange(minRating: number, from: string, to: string): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiUrl}/games?dates=${from},${to}&ordering=-rating`)
+      .pipe(
+        map((response: any) => response.results.filter((game: any) => game.rating >= minRating))
+      );
   }
 }
