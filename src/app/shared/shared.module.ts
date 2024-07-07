@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ModalComponent } from './modal/modal.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SideBarComponent,
-    ModalComponent
+    ModalComponent,
+    CarouselComponent,
   ],
   imports: [
     CommonModule
@@ -16,6 +18,7 @@ import { ModalComponent } from './modal/modal.component';
     HeaderComponent,
     SideBarComponent,
     ModalComponent,
+    CarouselComponent,
   ]
 })
 export class SharedModule { }
