@@ -50,11 +50,29 @@
   </div>
 </section>
 
-<section class="bg-dark p-5">
+<section class="p-5">
   <div class="row">
     <div class="col-6">
       <h1><span class="text-warning text-center">Ratings</span></h1>
-      <app-bar-h [data]="ratings"></app-bar-h>
+      <app-bar-h [data]="ratings" xLabel="Counts" yLabel="Categories"></app-bar-h>
+    </div>
+    <div class="col-6">
+      <h1><span class="text-warning text-center">Platforms</span></h1>
+      <div class="row">
+        <div *ngFor="let platform of platforms; trackBy: trackByFn" class="col-3 bg-secondary card p-2 m-2 text-light">
+          <div class="card-body">
+            <h5 class="card-title">{{ platform.platform.name }}</h5>
+            <p class="card-text">{{ platform.released_at }}</p>
+            @if( platform.requirements.minimum) {
+              <button class="btn btn-warning btn-lg"
+                      data-toggle="modal" [attr.data-target]="'#' + platform.platform.slug">
+                <i class="bi bi-laptop"></i>
+              </button>
+              <app-modal [id]="platform.platform.slug" [title]="platform.platform.name" [data]="platform.requirements.minimum"></app-modal>
+            }
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

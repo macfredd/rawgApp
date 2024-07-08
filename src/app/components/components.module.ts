@@ -5,8 +5,7 @@ import { GameComponent } from './game/game.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BarHComponent } from './graphs/bar-h/bar-h.component';
-
-
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +17,7 @@ import { BarHComponent } from './graphs/bar-h/bar-h.component';
     BrowserAnimationsModule,
     CommonModule,
     NgxChartsModule,
+    SharedModule,
   ],
   exports: [
 

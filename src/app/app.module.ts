@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { provideHttpClient, withInterceptors, withInterceptorsFromDi } from '@angular/common/http';
 import { addApiKeyInterceptor } from './interceptors/add-api-key.interceptor';
 import { BarHComponent } from './components/graphs/bar-h/bar-h.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { BarHComponent } from './components/graphs/bar-h/bar-h.component';
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    SharedModule
+    SharedModule,
+    RouterModule,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

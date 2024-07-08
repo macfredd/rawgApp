@@ -12,6 +12,7 @@ export class GameComponent {
   public game: any = {};
   public screenshots: any[] = [];
   public ratings: any[] = [];
+  public platforms: any[] = [];
 
   constructor(private gamesService: GamesService,
     private router: Router,
@@ -37,6 +38,7 @@ export class GameComponent {
           };
         }
       );
+      this.platforms = game.platforms;
     });
   }
 
@@ -91,6 +93,9 @@ export class GameComponent {
     tempDiv.remove();
 
     return fullDescription;
-}
+  }
 
+  trackByFn(index: number, item: any): number {
+    return item.platform.id;
+  }
 }
