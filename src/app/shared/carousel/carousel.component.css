@@ -7,3 +7,9 @@
   object-fit: cover; /* Scale the image to cover the container */
   object-position: center 10%; /* Center the image */
 }
+
+.top-right {
+  top: 20px;
+  right: 5px;
+  transform: translateY(-50%);
+}

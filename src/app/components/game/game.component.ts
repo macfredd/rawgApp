@@ -38,9 +38,6 @@ export class GameComponent {
           };
         }
       );
-
-      console.log(game.platforms);
-
       this.platforms = game.platforms;
     });
   }

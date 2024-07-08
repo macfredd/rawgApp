@@ -8,7 +8,7 @@ import { GamesService } from '../../services/games.service';
 })
 export class DashboardComponent implements OnInit {
 
-  public best3gamesLastMonth: any[] = [];
+  public bestGamesLastMonth: any[] = [];
 
   constructor(private gameService: GamesService) { }
 
@@ -19,8 +19,7 @@ export class DashboardComponent implements OnInit {
 
     this.gameService.getBestGamesByDateRange(4, this.formatDate(lastMonth), this.formatDate(currentDate))
       .subscribe((games: any[]) => {
-        this.best3gamesLastMonth = games.slice(0, 3);
-        console.log(this.best3gamesLastMonth);
+        this.bestGamesLastMonth = games.slice(0, 3);
       });
   }
 

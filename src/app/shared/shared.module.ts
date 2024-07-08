@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ModalComponent } from './modal/modal.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -13,8 +14,10 @@ import { CarouselComponent } from './carousel/carousel.component';
     CarouselComponent,
   ],
   imports: [
-    CommonModule
-  ], exports: [
+    CommonModule,
+    RouterModule,
+  ],
+  exports: [
     HeaderComponent,
     SideBarComponent,
     ModalComponent,
