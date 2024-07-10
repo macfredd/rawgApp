@@ -5,6 +5,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { ModalComponent } from './modal/modal.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { RouterModule } from '@angular/router';
+import { GridComponent } from './grid/grid.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
     SideBarComponent,
     ModalComponent,
     CarouselComponent,
+    GridComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { RouterModule } from '@angular/router';
     SideBarComponent,
     ModalComponent,
     CarouselComponent,
+    GridComponent,
   ]
 })
 export class SharedModule { }
