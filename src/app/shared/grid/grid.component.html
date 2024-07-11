@@ -2,12 +2,12 @@
     <h1 class="text-center">{{title}}</h1>
     <div class="row">
         @for (game of games; track $index) {
-            <div class="col-4 g-0">
+            <div class="col-md-6 col-lg-4">
                 <div class="card bg-dark g-0">
                     <a [routerLink]="['game', game.id]">
                       <img src="{{ game.background_image }}" class="card-img-top" alt="{{ game.name }}">
                     </a>
-                    <div class="card-body">
+                    <div class="card-body text-white">
                       <h5 class="card-title">{{ game.name }}</h5>
                       <p>
                         @for (plataform of game.parent_platforms; track $index) {
