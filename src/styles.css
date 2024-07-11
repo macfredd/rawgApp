@@ -26,6 +26,12 @@
 
 .plataform-icon {
     width: 40px!important;
-    height: 40p0x!important;
+    height: 40px!important;
+    margin-right: 10px!important;
+}
+
+.plataform-icon-small{
+    width: 20px!important;
+    height: 20px!important;
     margin-right: 10px!important;
 }

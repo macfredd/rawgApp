@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class GridComponent {
 
-  @Input() title: string = '';
+  @Input() title: string = 'Title Section';
   @Input() games: any[] = [];
   @Input() privateColor: string = 'black';
   @Input() secondaryCOlor: string = 'gray';
