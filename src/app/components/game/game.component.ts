@@ -55,7 +55,7 @@ export class GameComponent {
 
     tempDiv.remove();
 
-    return firstParagraph ? firstParagraph.slice(0, 300) + '...' : '';
+    return firstParagraph ? firstParagraph.slice(0, 300) + '...' + ` <a href="${this.game.website}" target="_blank">More info</a>` : '';
   }
 
   get fullDescription() {
@@ -65,7 +65,7 @@ export class GameComponent {
 
     let fullDescription = '';
     let wordCount = 0;
-    const maxWords = 66;
+    const maxWords = 100;
 
     for (const p of paragraphs) {
       if ( p.textContent) {
@@ -87,7 +87,6 @@ export class GameComponent {
 
     fullDescription = fullDescription.trim();
 
-    // Añadir el enlace al final
     fullDescription += ` <a href="${this.game.website}" target="_blank">More info</a>`;
 
     tempDiv.remove();

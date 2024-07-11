@@ -31,7 +31,7 @@
           <div class="col-xl-3 col-lg-4 col-md-6 card p-5 card-gradient">
             <div class="card-body">
               <h5 class="card-title h1 text-dark">{{ game.name }}</h5>
-              <p class="card-text lead text-dark text-wrap">{{ shortDescription }}</p>
+              <div class="card-text lead text-dark text-wrap" [innerHTML]="shortDescription" ></div>
               <p class="card-text text-dark h4">Released: {{ game.released }}</p>
               <p class="card-text text-dark h5">Rating: {{ game.rating }}</p>
               <p class="card-text text-dark">Website: <a href="{{game.website}}" target="_blank">{{ game.website }}</a></p>
@@ -42,13 +42,13 @@
     </div>
   </div>
 
-<section class="bg-dark text-light text-center p-10">
+<!-- <section class="bg-dark text-light text-center p-10">
   <div class="d-sm-flex align-items-center justify-content-between">
     <div>
       <div class="h5 p-4" [innerHTML]="fullDescription" ></div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="p-5">
   <div class="row">
