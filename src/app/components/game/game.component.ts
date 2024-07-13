@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GamesService } from '../../services/games.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalImageService } from '../../services/modal-image.service';
 
 @Component({
   selector: 'app-game',
@@ -16,7 +17,8 @@ export class GameComponent {
 
   constructor(private gamesService: GamesService,
     private router: Router,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private modalImageService: ModalImageService
   ) { }
 
   ngOnInit() {
@@ -96,5 +98,9 @@ export class GameComponent {
 
   trackByFn(index: number, item: any): number {
     return item.platform.id;
+  }
+
+  showModal(image: string) {
+    this.modalImageService.showModal(image);
   }
 }

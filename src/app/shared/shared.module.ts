@@ -6,6 +6,7 @@ import { ModalComponent } from './modal/modal.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { RouterModule } from '@angular/router';
 import { GridComponent } from './grid/grid.component';
+import { ImageViewerComponent } from './image-viewer/image-viewer.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { GridComponent } from './grid/grid.component';
     ModalComponent,
     CarouselComponent,
     GridComponent,
+    ImageViewerComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { GridComponent } from './grid/grid.component';
     ModalComponent,
     CarouselComponent,
     GridComponent,
+    ImageViewerComponent,
   ]
 })
 export class SharedModule { }

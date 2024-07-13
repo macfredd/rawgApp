@@ -83,9 +83,11 @@
         <h1>Game <span class="text-warning">Screenshots</span></h1>
         <div class="lead p-4">
           <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let screenshot of screenshots">
-              <img class="img-fluid rounded" src="{{screenshot.image}}" alt="">
-            </div>
+            @for (screenshot of screenshots; track $index) {
+              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <img (click)="showModal(screenshot.image)" class="img-fluid rounded" src="{{screenshot.image}}" alt="">
+              </div>
+            }
           </div>
         </div>
     </div>

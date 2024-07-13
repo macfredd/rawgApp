@@ -35,3 +35,7 @@
     height: 20px!important;
     margin-right: 10px!important;
 }
+
+.hidemodal {
+    display: none;
+}
