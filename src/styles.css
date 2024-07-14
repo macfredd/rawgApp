@@ -39,3 +39,7 @@
 .hidemodal {
     display: none;
 }
+
+.pointer {
+    cursor: pointer;
+}

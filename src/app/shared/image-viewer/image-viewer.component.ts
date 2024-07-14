@@ -14,7 +14,25 @@ export class ImageViewerComponent {
   }
 
   get image() {
+    return this.modalImageService.img[this.modalImageService.imgIndex];
+  }
+
+  get imageList() {
     return this.modalImageService.img;
+  }
+
+  get imageIndex() {
+    return this.modalImageService.imgIndex;
+  }
+
+  nextImage() {
+    this.modalImageService.imgIndex =
+      (this.modalImageService.imgIndex + 1) % this.modalImageService.img.length;
+  }
+
+  prevImage() {
+    this.modalImageService.imgIndex =
+      (this.modalImageService.imgIndex - 1 + this.modalImageService.img.length) % this.modalImageService.img.length;
   }
 
   closeModal() {

@@ -100,7 +100,12 @@ export class GameComponent {
     return item.platform.id;
   }
 
-  showModal(image: string) {
-    this.modalImageService.showModal(image);
+  showModal(image: any[], imageIndex: number) {
+
+    const images: string[] = image.map((img: any) => {
+      return img.image;
+    });
+
+    this.modalImageService.showModal(images, imageIndex);
   }
 }
