@@ -4,17 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ModalImageService {
-
   private _hideModal: boolean = true;
   public img: string = '';
-
-  constructor() { }
 
   get hideModal() {
     return this._hideModal;
   }
 
   showModal(img: string) {
+    console.log(img);
     this.img = img;
     this._hideModal = false;
   }
@@ -22,5 +20,4 @@ export class ModalImageService {
   closeModal() {
     this._hideModal = true;
   }
-
 }
