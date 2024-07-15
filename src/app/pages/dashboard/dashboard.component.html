@@ -1,2 +1,13 @@
-<app-carousel [games]="bestGamesLastMonth" style="height: auto;" ></app-carousel>
-<app-grid title="Upcoming Games" [games]="nextWeekGames"></app-grid>
+<section>
+    @if (!isLoading) {
+      <app-carousel [games]="bestGamesLastMonth" style="height: auto;"></app-carousel>
+      <app-grid title="Upcoming Games" [games]="nextWeekGames"></app-grid>
+    } @else {
+      <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading content, please wait...</span>
+        </div>
+        <p>Loading content, please wait...</p>
+      </div>
+    }
+  </section>

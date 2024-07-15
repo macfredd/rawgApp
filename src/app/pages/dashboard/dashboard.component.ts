@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
 
   public bestGamesLastMonth: any[] = [];
   public nextWeekGames: any[] = [];
+  isLoading: boolean = true;
 
   constructor(private gameService: GamesService) { }
 
@@ -19,9 +20,13 @@ export class DashboardComponent implements OnInit {
     const lastMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, currentDate.getDate()); 
     const nextWeek = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 30);
 
+    this.isLoading = true;
     this.fillBestGamesLastMonth(currentDate, lastMonth);
     this.fillNextWeekGames(currentDate, nextWeek);
+    this.isLoading = false;
   }
+
+
 
   private fillBestGamesLastMonth(currentDate: Date, lastMonth: Date ): void {
     this.gameService.getBestGamesByDateRange(4, this.formatDate(lastMonth), this.formatDate(currentDate))
