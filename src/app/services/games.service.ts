@@ -59,6 +59,13 @@ export class GamesService {
       );
   }
 
+  getBestGamesByDateRangeAndGenre(minRating: number, from: string, to: string, genre: number): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiUrl}/games?genres=${genre}&dates=${from},${to}&ordering=-rating`)
+      .pipe(
+        map((response: any) => response.results.filter((game: any) => game.rating >= minRating))
+      );
+  }
+
   /**
    * Search Games
    *
