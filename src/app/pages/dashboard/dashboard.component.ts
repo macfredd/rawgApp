@@ -55,9 +55,10 @@ export class DashboardComponent implements OnInit {
     this.genreService.getGenres()
     .pipe(
       switchMap((genres: any) => {
-        const selectedGenres = this.shuffle(genres.results).slice(0, 5);
+        const filteredGenres = genres.results.filter((genre: any) => genre.name !== 'Indie' && genre.name !== 'Casual');
+        const selectedGenres = this.shuffle(filteredGenres).slice(0, 5);
 
-        const gameRequests = selectedGenres.map((genre: any) =>
+        const gameRequests = filteredGenres.map((genre: any) =>
           this.gameService.getBestGamesByDateRangeAndGenre(
             0,
             this.formatDate(this.lastMonth),
@@ -67,7 +68,7 @@ export class DashboardComponent implements OnInit {
             map((games: any) => ({
              genre_id: genre.id,
              genre_name: genre.name,
-             games: games.slice(0, 6)
+             games: games.slice(0, 4)
           }))
         )
       );
@@ -76,7 +77,8 @@ export class DashboardComponent implements OnInit {
     })
     )
     .subscribe((results: any) => {
-    console.log(results);
+      this.bestGamesByGenre = results;
+      console.log(this.bestGamesByGenre);
     });
 
   }

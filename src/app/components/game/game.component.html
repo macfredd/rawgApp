@@ -23,7 +23,7 @@
 
 <div class="container-fluid p-0">
   <div class="container-fluid p-0">
-    <div class="row no-gutters">
+    <div class="row no-gutters" style="min-height: 80vh;">
       <div class="col-12 position-relative"
            [ngStyle]="{'background-image': 'linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0)), url(' + game.background_image + ')'}"
            style="background-size: cover; background-position: top; background-repeat: no-repeat; transition: background-image 0.5s;">
@@ -52,28 +52,32 @@
 
 <section class="p-5">
   <div class="row">
-    <div class="col-6">
-      <h1><span class="text-warning text-center">Ratings</span></h1>
-      <app-bar-h [data]="ratings" xLabel="Counts" yLabel="Categories"></app-bar-h>
-    </div>
-    <div class="col-6">
-      <h1><span class="text-warning text-center">Platforms</span></h1>
-      <div class="row">
-        <div *ngFor="let platform of platforms; trackBy: trackByFn" class="col-3 bg-secondary card p-2 m-2 text-light">
-          <div class="card-body">
-            <h5 class="card-title">{{ platform.platform.name }}</h5>
-            <p class="card-text">{{ platform.released_at }}</p>
-            @if( platform.requirements.minimum) {
-              <button class="btn btn-warning btn-lg"
-                      data-toggle="modal" [attr.data-target]="'#' + platform.platform.slug">
-                <i class="bi bi-laptop"></i>
-              </button>
-              <app-modal [id]="platform.platform.slug" [title]="platform.platform.name" [data]="platform.requirements.minimum"></app-modal>
-            }
+    @if (ratings.length > 0) {
+      <div class="col-6">
+        <h1><span class="text-warning text-center">Ratings</span></h1>
+        <app-bar-h [data]="ratings" xLabel="Counts" yLabel="Categories"></app-bar-h>
+      </div>
+    }
+    @if (platforms.length > 0) {
+      <div class="col-6">
+        <h1><span class="text-warning text-center">Platforms</span></h1>
+        <div class="row">
+          <div *ngFor="let platform of platforms; trackBy: trackByFn" class="col-3 bg-secondary card p-2 m-2 text-light">
+            <div class="card-body">
+              <h5 class="card-title">{{ platform.platform.name }}</h5>
+              <p class="card-text">{{ platform.released_at }}</p>
+              @if( platform.requirements.minimum) {
+                <button class="btn btn-warning btn-lg"
+                        data-toggle="modal" [attr.data-target]="'#' + platform.platform.slug">
+                  <i class="bi bi-laptop"></i>
+                </button>
+                <app-modal [id]="platform.platform.slug" [title]="platform.platform.name" [data]="platform.requirements.minimum"></app-modal>
+              }
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    }
   </div>
 </section>
 

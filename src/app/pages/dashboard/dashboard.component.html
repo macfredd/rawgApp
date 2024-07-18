@@ -2,6 +2,11 @@
     @if (!isLoading) {
       <app-carousel [games]="bestGamesLastMonth" style="height: auto;"></app-carousel>
       <app-grid title="Upcoming Games" [games]="nextWeekGames"></app-grid>
+
+      @for (genre of bestGamesByGenre; track $index) {
+        <app-grid title="{{ genre.genre_name }}" [games]="genre.games"></app-grid>
+      }
+
     } @else {
       <div class="text-center">
         <div class="spinner-border" role="status">
