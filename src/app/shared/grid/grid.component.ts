@@ -11,6 +11,8 @@ export class GridComponent implements OnChanges{
   @Input() games: any[] = [];
   @Input() privateColor: string = 'black';
   @Input() secondaryCOlor: string = 'gray';
+  @Input() SectionBgImg: string = '';
+
   isLoading: boolean = true;
 
   ngOnChanges() {

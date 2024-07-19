@@ -1,24 +1,31 @@
-<section>
-  @if (!isLoading) {
-    <h1 class="text-center">{{title}}</h1>
-    <div class="row">
-        @for (game of games; track $index) {
-            <div class="col-md-3 col-lg-3">
-                <div class="card bg-dark g-0">
-                    <a [routerLink]="['game', game.id]">
-                      <img src="{{ game.background_image }}" class="card-img-top" alt="{{ game.name }}">
-                    </a>
-                    <div class="card-body text-white">
-                      <h5 class="card-title">{{ game.name }}</h5>
-                      <p>
-                        @for (plataform of game.parent_platforms; track $index) {
-                          <img class="plataform-icon-small m-2 text-dark " src="assets/svg/{{ plataform.platform.slug }}.svg" tooltip alt="{{ plataform.platform.slug }}">
-                        }
-                      </p>
+
+<section style="position: relative;">
+
+  <div style="position: relative; z-index: 1;">
+    @if (!isLoading) {
+      <div class="row">
+        <h1 class="text-center">{{title}}</h1>
+      </div>
+
+      <div class="row">
+          @for (game of games; track $index) {
+              <div class="col-lg-2">
+                  <div class="card bg-dark g-0">
+                      <a [routerLink]="['game', game.id]">
+                        <img src="{{ game.background_image }}" class="card-img-top" alt="{{ game.name }}">
+                      </a>
+                      <div class="card-body text-white">
+                        <h5 class="card-title">{{ game.name }}</h5>
+                        <p>
+                          @for (plataform of game.parent_platforms; track $index) {
+                            <img class="plataform-icon-small m-2 text-dark " src="assets/svg/{{ plataform.platform.slug }}.svg" tooltip alt="{{ plataform.platform.slug }}">
+                          }
+                        </p>
+                      </div>
                     </div>
-                  </div>
-            </div>
-        }
-    </div>
-  }
+              </div>
+          }
+      </div>
+    }
+  </div>
 </section>

@@ -4,7 +4,10 @@
       <app-grid title="Upcoming Games" [games]="nextWeekGames"></app-grid>
 
       @for (genre of bestGamesByGenre; track $index) {
-        <app-grid title="{{ genre.genre_name }}" [games]="genre.games"></app-grid>
+        <app-grid 
+          title="{{ genre.genre_name }}"
+          SectionBgImg="{{ genre.background_image }}"
+          [games]="genre.games"></app-grid>
       }
 
     } @else {

@@ -68,6 +68,7 @@ export class DashboardComponent implements OnInit {
             map((games: any) => ({
              genre_id: genre.id,
              genre_name: genre.name,
+             background_image: genre.image_background,
              games: games.slice(0, 4)
           }))
         )
