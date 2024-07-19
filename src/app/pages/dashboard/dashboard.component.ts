@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
              genre_id: genre.id,
              genre_name: genre.name,
              background_image: genre.image_background,
-             games: games.slice(0, 4)
+             games: games
           }))
         )
       );
@@ -78,10 +78,13 @@ export class DashboardComponent implements OnInit {
     })
     )
     .subscribe((results: any) => {
-      this.bestGamesByGenre = results;
-      console.log(this.bestGamesByGenre);
+      this.bestGamesByGenre = results
+        .filter((result: any) => result.games.length > 1)
+        .map((result: any) => ({
+          ...result,
+          games: result.games.filter((game: any) => !game.tags.some((tag: any) => tag.name.toLowerCase().includes('sex')))
+        }))
     });
-
   }
 
   private shuffle(array: any[]) {

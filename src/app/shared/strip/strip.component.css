@@ -1,0 +1,31 @@
+#continuousCarousel {
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  flex-direction: row;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.carousel-item .d-flex {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping to a new line */
+}
+
+.carousel-item .col-2 {
+  flex: 0 0 auto;
+  width: 16.6667%; /* Each item takes 1/6th of the width */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+

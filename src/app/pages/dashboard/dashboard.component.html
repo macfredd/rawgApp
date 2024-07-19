@@ -1,13 +1,12 @@
 <section>
     @if (!isLoading) {
-      <app-carousel [games]="bestGamesLastMonth" style="height: auto;"></app-carousel>
-      <app-grid title="Upcoming Games" [games]="nextWeekGames"></app-grid>
+      <!-- <app-carousel [games]="bestGamesLastMonth" style="height: auto;"></app-carousel>
+      <app-grid title="Upcoming Games" [games]="nextWeekGames"></app-grid> -->
 
       @for (genre of bestGamesByGenre; track $index) {
-        <app-grid 
+        <app-strip
           title="{{ genre.genre_name }}"
-          SectionBgImg="{{ genre.background_image }}"
-          [games]="genre.games"></app-grid>
+          [games]="genre.games"></app-strip>
       }
 
     } @else {
