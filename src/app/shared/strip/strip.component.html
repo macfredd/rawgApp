@@ -7,7 +7,13 @@
           @for (game of games; track game.id) {
             <div class="col-2">
               <a [routerLink]="['game', game.id]">
-                <img src="{{ game.background_image }}" class="d-block w-100" alt="{{ game.name }}">
+                <div class="aspect-ratio-container container-hover">
+                  <img src="{{ game.background_image }}" class="d-block w-100" alt="{{ game.name }}">
+                  <div class="absolute-bottom full-width padding-2px bg-white">
+                    <!-- Your content here, e.g., caption, text overlay, etc. -->
+                    <p class="text-center">{{ game.name }}</p>
+                  </div>
+                </div>
               </a>
             </div>
           }

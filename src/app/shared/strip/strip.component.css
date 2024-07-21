@@ -28,4 +28,36 @@
   display: block;
 }
 
+.aspect-ratio-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625 or 56.25%) */
+  overflow: hidden;
+}
 
+.aspect-ratio-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container */
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.absolute-bottom {
+  position: absolute;
+  bottom: -100%; /* Initially hide the div by positioning it below the container */
+  width: 100%;
+  opacity: 0;
+  padding: 2px;
+  transition: bottom 0.5s ease, opacity 0.5s ease; /* Add transition for smooth effect */
+}
+
+.container-hover:hover .absolute-bottom {
+  bottom: 0; /* Move the div to its intended position */
+  opacity: 0.5; /* Make the div visible */
+}
