@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GamesService } from '../../services/games.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalImageService } from '../../services/modal-image.service';
 
 @Component({
   selector: 'app-game',
@@ -16,7 +17,8 @@ export class GameComponent {
 
   constructor(private gamesService: GamesService,
     private router: Router,
-    private activateRoute: ActivatedRoute
+    private activateRoute: ActivatedRoute,
+    private modalImageService: ModalImageService
   ) { }
 
   ngOnInit() {
@@ -55,7 +57,7 @@ export class GameComponent {
 
     tempDiv.remove();
 
-    return firstParagraph ? firstParagraph.slice(0, 300) + '...' : '';
+    return firstParagraph ? firstParagraph.slice(0, 300) + '...' + ` <a href="${this.game.website}" target="_blank">More info</a>` : '';
   }
 
   get fullDescription() {
@@ -65,7 +67,7 @@ export class GameComponent {
 
     let fullDescription = '';
     let wordCount = 0;
-    const maxWords = 66;
+    const maxWords = 100;
 
     for (const p of paragraphs) {
       if ( p.textContent) {
@@ -87,7 +89,6 @@ export class GameComponent {
 
     fullDescription = fullDescription.trim();
 
-    // Añadir el enlace al final
     fullDescription += ` <a href="${this.game.website}" target="_blank">More info</a>`;
 
     tempDiv.remove();
@@ -97,5 +98,14 @@ export class GameComponent {
 
   trackByFn(index: number, item: any): number {
     return item.platform.id;
+  }
+
+  showModal(image: any[], imageIndex: number) {
+
+    const images: string[] = image.map((img: any) => {
+      return img.image;
+    });
+
+    this.modalImageService.showModal(images, imageIndex);
   }
 }

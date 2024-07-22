@@ -58,4 +58,22 @@ export class GamesService {
         map((response: any) => response.results.filter((game: any) => game.rating >= minRating))
       );
   }
+
+  getBestGamesByDateRangeAndGenre(minRating: number, from: string, to: string, genre: number): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiUrl}/games?genres=${genre}&dates=${from},${to}&ordering=-rating`)
+      .pipe(
+        map((response: any) => response.results.filter((game: any) => game.rating >= minRating))
+      );
+  }
+
+  /**
+   * Search Games
+   *
+   * @param page_size Number of games per page
+   * @param query Search query
+   * @returns Games that match the search query
+   */
+  searchGames(page_size: number, query: string) {
+    return this.httpClient.get(`${environment.apiUrl}/games?page_size=${page_size}&search=${query}&page=1`);
+  }
 }

@@ -1,0 +1,71 @@
+#continuousCarousel {
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  flex-direction: row;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.carousel-item .d-flex {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.carousel-item .col-2 {
+  flex: 0 0 auto;
+  width: 16.6667%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.aspect-ratio-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+}
+
+.aspect-ratio-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.absolute-bottom {
+  position: absolute;
+  bottom: -100%;
+  width: 100%;
+  opacity: 0;
+  padding: 2px;
+  transition: bottom 0.5s ease, opacity 0.5s ease;
+}
+
+.container-hover:hover .absolute-bottom {
+  bottom: 0;
+  opacity: 0.5;
+}
+
+.small-font {
+  font-size: 1.5rem;
+}
+
+.bg-grey {
+  background-color: "#212121" !important;
+}

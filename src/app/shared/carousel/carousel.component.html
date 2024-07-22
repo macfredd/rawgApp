@@ -1,37 +1,46 @@
 <section>
-  <div class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      @for (game of games; track game.id; let idx = $index) {
-        <div class="carousel-item" [class.active]="idx === 0">
-            <a [routerLink]="['game', game.id]">
-              <img class="img-fluid" [src]="game.background_image" class="d-block h-50 w-100" alt="...">
-            </a>
-            <div class="carousel-bs" [ngStyle]="{ 'background-color': '#' + game.dominant_color }">
-              <div class="row">
-                <div class="position-absolute top-right">
-                  <span class="badge bg-danger text-white" style="font-size: 1.5rem;">
-                    Rating: {{ game.rating }}
-                  </span>
-                </div>
-                <div class="col m-5 text-center">
-                  <h1>{{ game.name }}</h1>
-                  <p class="lead">Released: {{ game.released }}</p>
-                  <p>
-                    @for (genre of game.genres; track $index) {
-                      <span class="badge badge-success m-2" style="font-size: 1.5rem;">{{ genre.name }}</span>
-                    }
-                  </p>
-                  <p>
-                    @for (plataform of game.parent_platforms; track $index) {
-                      <img class="plataform-icon m-2" src="assets/svg/{{ plataform.platform.slug }}.svg" alt="">
-                    }
-                  </p>
+  @if (isLoading) {
+    <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading content, please wait...</span>
+      </div>
+      <p>Loading content, please wait...</p>
+    </div>
+  } @else {
+    <div class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        @for (game of games; track game.id; let idx = $index) {
+          <div class="carousel-item" [class.active]="idx === 0">
+              <a [routerLink]="['game', game.id]">
+                <img class="img-fluid" [src]="game.background_image" class="d-block h-50 w-100" alt="...">
+              </a>
+              <div class="carousel-bs" [ngStyle]="{ 'background-color': '#' + game.dominant_color }">
+                <div class="row">
+                  <div class="position-absolute top-right">
+                    <span class="badge bg-danger text-white" style="font-size: 1.5rem;">
+                      Rating: {{ game.rating }}
+                    </span>
+                  </div>
+                  <div class="col m-2 text-center">
+                    <h1>{{ game.name }}</h1>
+                    <p class="lead">Released: {{ game.released }}</p>
+                    <p>
+                      @for (genre of game.genres; track $index) {
+                        <span class="badge badge-success m-2" style="font-size: 1.5rem;">{{ genre.name }}</span>
+                      }
+                    </p>
+                    <p>
+                      @for (plataform of game.parent_platforms; track $index) {
+                        <img class="plataform-icon m-2" src="assets/svg/{{ plataform.platform.slug }}.svg" alt="">
+                      }
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-        </div>
-      }
+          </div>
+        }
+      </div>
     </div>
-  </div>
+  }
 </section>
 

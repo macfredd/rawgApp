@@ -1,11 +1,11 @@
 .carousel-item {
-  height: 100vh; /* Set height to 50% of viewport height */
+  height: 100vh;
 }
 .carousel-item img {
   height: 100%;
   width: 100%;
-  object-fit: cover; /* Scale the image to cover the container */
-  object-position: center 10%; /* Center the image */
+  object-fit: cover;
+  object-position: center 20%;
 }
 
 .top-right {

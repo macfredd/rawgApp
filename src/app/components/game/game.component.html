@@ -23,7 +23,7 @@
 
 <div class="container-fluid p-0">
   <div class="container-fluid p-0">
-    <div class="row no-gutters">
+    <div class="row no-gutters" style="min-height: 80vh;">
       <div class="col-12 position-relative"
            [ngStyle]="{'background-image': 'linear-gradient(to right, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0)), url(' + game.background_image + ')'}"
            style="background-size: cover; background-position: top; background-repeat: no-repeat; transition: background-image 0.5s;">
@@ -31,7 +31,7 @@
           <div class="col-xl-3 col-lg-4 col-md-6 card p-5 card-gradient">
             <div class="card-body">
               <h5 class="card-title h1 text-dark">{{ game.name }}</h5>
-              <p class="card-text lead text-dark text-wrap">{{ shortDescription }}</p>
+              <div class="card-text lead text-dark text-wrap" [innerHTML]="shortDescription" ></div>
               <p class="card-text text-dark h4">Released: {{ game.released }}</p>
               <p class="card-text text-dark h5">Rating: {{ game.rating }}</p>
               <p class="card-text text-dark">Website: <a href="{{game.website}}" target="_blank">{{ game.website }}</a></p>
@@ -42,38 +42,35 @@
     </div>
   </div>
 
-<section class="bg-dark text-light text-center p-10">
-  <div class="d-sm-flex align-items-center justify-content-between">
-    <div>
-      <div class="h5 p-4" [innerHTML]="fullDescription" ></div>
-    </div>
-  </div>
-</section>
 
 <section class="p-5">
   <div class="row">
-    <div class="col-6">
-      <h1><span class="text-warning text-center">Ratings</span></h1>
-      <app-bar-h [data]="ratings" xLabel="Counts" yLabel="Categories"></app-bar-h>
-    </div>
-    <div class="col-6">
-      <h1><span class="text-warning text-center">Platforms</span></h1>
-      <div class="row">
-        <div *ngFor="let platform of platforms; trackBy: trackByFn" class="col-3 bg-secondary card p-2 m-2 text-light">
-          <div class="card-body">
-            <h5 class="card-title">{{ platform.platform.name }}</h5>
-            <p class="card-text">{{ platform.released_at }}</p>
-            @if( platform.requirements.minimum) {
-              <button class="btn btn-warning btn-lg"
-                      data-toggle="modal" [attr.data-target]="'#' + platform.platform.slug">
-                <i class="bi bi-laptop"></i>
-              </button>
-              <app-modal [id]="platform.platform.slug" [title]="platform.platform.name" [data]="platform.requirements.minimum"></app-modal>
-            }
+    @if (ratings.length > 0) {
+      <div class="col-6">
+        <h1><span class="text-warning text-center">Ratings</span></h1>
+        <app-bar-h [data]="ratings" xLabel="Counts" yLabel="Categories"></app-bar-h>
+      </div>
+    }
+    @if (platforms.length > 0) {
+      <div class="col-6">
+        <h1><span class="text-warning text-center">Platforms</span></h1>
+        <div class="row">
+          <div *ngFor="let platform of platforms; trackBy: trackByFn" class="col-3 bg-secondary card p-2 m-2 text-light">
+            <div class="card-body">
+              <h5 class="card-title">{{ platform.platform.name }}</h5>
+              <p class="card-text">{{ platform.released_at }}</p>
+              @if( platform.requirements.minimum) {
+                <button class="btn btn-warning btn-lg"
+                        data-toggle="modal" [attr.data-target]="'#' + platform.platform.slug">
+                  <i class="bi bi-laptop"></i>
+                </button>
+                <app-modal [id]="platform.platform.slug" [title]="platform.platform.name" [data]="platform.requirements.minimum"></app-modal>
+              }
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    }
   </div>
 </section>
 
@@ -83,9 +80,11 @@
         <h1>Game <span class="text-warning">Screenshots</span></h1>
         <div class="lead p-4">
           <div class="row">
-            <div class="col-12 col-md-6 col-lg-4 mb-4" *ngFor="let screenshot of screenshots">
-              <img class="img-fluid rounded" src="{{screenshot.image}}" alt="">
-            </div>
+            @for (screenshot of screenshots; track $index) {
+              <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <img (click)="showModal(screenshots, $index)" class="img-fluid rounded pointer" src="{{screenshot.image}}" alt="">
+              </div>
+            }
           </div>
         </div>
     </div>
