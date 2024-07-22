@@ -11,11 +11,9 @@ export class StripComponent implements AfterViewInit, OnInit {
   @Input() games: any[] = [];
 
   constructor() {
-
   }
+
   ngOnInit(): void {
-    console.log(this.title)
-    console.log(this.games)
   }
 
   ngAfterViewInit(): void {
@@ -37,5 +35,4 @@ export class StripComponent implements AfterViewInit, OnInit {
       }
     });
   }
-
 }
