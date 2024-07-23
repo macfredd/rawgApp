@@ -1,20 +1,23 @@
 <section>
-    @if (!isLoading) {
-      <app-carousel [games]="bestGamesLastMonth" style="height: auto;"></app-carousel>
-      <app-grid title="Upcoming Games" [games]="nextWeekGames"></app-grid>
+  @if (!isLoading) {
+    <app-carousel
+      [games]="bestGamesLastMonth"
+      style="height: auto"
+    ></app-carousel>
+    <app-grid title="Upcoming Games" [games]="nextWeekGames"></app-grid>
 
-      @for (genre of bestGamesByGenre; track $index) {
-        <app-strip
-          title="{{ genre.genre_name }}"
-          [games]="genre.games"></app-strip>
-      }
-
-    } @else {
-      <div class="text-center">
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading content, please wait...</span>
-        </div>
-        <p>Loading content, please wait...</p>
-      </div>
+    @for (genre of bestGamesByGenre; track $index) {
+      <app-strip
+        title="{{ genre.genre_name }}"
+        [games]="genre.games"
+      ></app-strip>
     }
-  </section>
+  } @else {
+    <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading content, please wait...</span>
+      </div>
+      <p>Loading content, please wait...</p>
+    </div>
+  }
+</section>

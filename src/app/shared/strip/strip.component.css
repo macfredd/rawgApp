@@ -54,7 +54,9 @@
   width: 100%;
   opacity: 0;
   padding: 2px;
-  transition: bottom 0.5s ease, opacity 0.5s ease;
+  transition:
+    bottom 0.5s ease,
+    opacity 0.5s ease;
 }
 
 .container-hover:hover .absolute-bottom {

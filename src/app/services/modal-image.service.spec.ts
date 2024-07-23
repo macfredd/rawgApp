@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { ModalImageService } from './modal-image.service';
+import { ModalImageService } from "./modal-image.service";
 
-describe('ModalImageService', () => {
+describe("ModalImageService", () => {
   let service: ModalImageService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('ModalImageService', () => {
     service = TestBed.inject(ModalImageService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

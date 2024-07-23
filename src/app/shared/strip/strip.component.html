@@ -1,6 +1,11 @@
 <section class="bg-dark">
   <h1 class="small-font p-3 text-light">{{ title }}</h1>
-  <div id="continuousCarousel" data-ride="carousel" data-interval="false" class="carousel slide">
+  <div
+    id="continuousCarousel"
+    data-ride="carousel"
+    data-interval="false"
+    class="carousel slide"
+  >
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="d-flex">
@@ -8,7 +13,11 @@
             <div class="col-2">
               <a [routerLink]="['game', game.id]">
                 <div class="aspect-ratio-container container-hover">
-                  <img src="{{ game.background_image }}" class="d-block w-100" alt="{{ game.name }}">
+                  <img
+                    src="{{ game.background_image }}"
+                    class="d-block w-100"
+                    alt="{{ game.name }}"
+                  />
                   <div class="absolute-bottom full-width padding-2px bg-white">
                     <!-- Your content here, e.g., caption, text overlay, etc. -->
                     <p class="text-center">{{ game.name }}</p>
@@ -20,11 +29,21 @@
         </div>
       </div>
     </div>
-    <a href="#continuousCarousel" role="button" data-slide="prev" class="carousel-control-prev">
+    <a
+      href="#continuousCarousel"
+      role="button"
+      data-slide="prev"
+      class="carousel-control-prev"
+    >
       <span aria-hidden="true" class="carousel-control-prev-icon"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a href="#continuousCarousel" role="button" data-slide="next" class="carousel-control-next">
+    <a
+      href="#continuousCarousel"
+      role="button"
+      data-slide="next"
+      class="carousel-control-next"
+    >
       <span aria-hidden="true" class="carousel-control-next-icon"></span>
       <span class="sr-only">Next</span>
     </a>

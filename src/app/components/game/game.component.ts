@@ -1,30 +1,29 @@
-import { Component } from '@angular/core';
-import { GamesService } from '../../services/games.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ModalImageService } from '../../services/modal-image.service';
+import { Component } from "@angular/core";
+import { GamesService } from "../../services/games.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ModalImageService } from "../../services/modal-image.service";
 
 @Component({
-  selector: 'app-game',
-  templateUrl: './game.component.html',
-  styleUrl: './game.component.css'
+  selector: "app-game",
+  templateUrl: "./game.component.html",
+  styleUrl: "./game.component.css",
 })
 export class GameComponent {
-
   public game: any = {};
   public screenshots: any[] = [];
   public ratings: any[] = [];
   public platforms: any[] = [];
 
-  constructor(private gamesService: GamesService,
+  constructor(
+    private gamesService: GamesService,
     private router: Router,
     private activateRoute: ActivatedRoute,
     private modalImageService: ModalImageService
-  ) { }
+  ) {}
 
   ngOnInit() {
-
-    this.activateRoute.params.subscribe(params => {
-      const gameId = params['id'];
+    this.activateRoute.params.subscribe((params) => {
+      const gameId = params["id"];
       this.getGameById(gameId);
       this.getGameScreenshots(gameId);
     });
@@ -36,10 +35,9 @@ export class GameComponent {
       this.ratings = game.ratings.map((rating: any) => {
         return {
           name: rating.title.charAt(0).toUpperCase() + rating.title.slice(1),
-          value: rating.count
-          };
-        }
-      );
+          value: rating.count,
+        };
+      });
       this.platforms = game.platforms;
     });
   }
@@ -51,39 +49,43 @@ export class GameComponent {
   }
 
   get shortDescription() {
-    const tempDiv = document.createElement('div');
+    const tempDiv = document.createElement("div");
     tempDiv.innerHTML = this.game.description;
-    const firstParagraph = tempDiv.querySelector('p')?.textContent;
+    const firstParagraph = tempDiv.querySelector("p")?.textContent;
 
     tempDiv.remove();
 
-    return firstParagraph ? firstParagraph.slice(0, 300) + '...' + ` <a href="${this.game.website}" target="_blank">More info</a>` : '';
+    return firstParagraph
+      ? firstParagraph.slice(0, 300) +
+          "..." +
+          ` <a href="${this.game.website}" target="_blank">More info</a>`
+      : "";
   }
 
   get fullDescription() {
-    const tempDiv = document.createElement('div');
+    const tempDiv = document.createElement("div");
     tempDiv.innerHTML = this.game.description;
-    const paragraphs = Array.from(tempDiv.querySelectorAll('p'));
+    const paragraphs = Array.from(tempDiv.querySelectorAll("p"));
 
-    let fullDescription = '';
+    let fullDescription = "";
     let wordCount = 0;
     const maxWords = 100;
 
     for (const p of paragraphs) {
-      if ( p.textContent) {
+      if (p.textContent) {
         const words = p.textContent.split(/\s+/);
         for (const word of words) {
-            if (wordCount < maxWords) {
-                fullDescription += word + ' ';
-                wordCount++;
-            } else {
-                break;
-            }
+          if (wordCount < maxWords) {
+            fullDescription += word + " ";
+            wordCount++;
+          } else {
+            break;
+          }
         }
         if (wordCount >= maxWords) {
-            break;
+          break;
         }
-        fullDescription += '\n';
+        fullDescription += "\n";
       }
     }
 
@@ -101,7 +103,6 @@ export class GameComponent {
   }
 
   showModal(image: any[], imageIndex: number) {
-
     const images: string[] = image.map((img: any) => {
       return img.image;
     });

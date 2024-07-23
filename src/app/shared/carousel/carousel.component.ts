@@ -1,12 +1,11 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from "@angular/core";
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.css'
+  selector: "app-carousel",
+  templateUrl: "./carousel.component.html",
+  styleUrl: "./carousel.component.css",
 })
 export class CarouselComponent implements OnChanges {
-
   @Input() games: any[] = [];
   isLoading: boolean = true;
 
@@ -15,5 +14,4 @@ export class CarouselComponent implements OnChanges {
       this.isLoading = false;
     }
   }
-
 }

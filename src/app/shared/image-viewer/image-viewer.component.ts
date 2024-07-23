@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { ModalImageService } from '../../services/modal-image.service';
+import { Component } from "@angular/core";
+import { ModalImageService } from "../../services/modal-image.service";
 
 @Component({
-  selector: 'app-image-viewer',
-  templateUrl: './image-viewer.component.html',
-  styleUrls: ['./image-viewer.component.css']
+  selector: "app-image-viewer",
+  templateUrl: "./image-viewer.component.html",
+  styleUrls: ["./image-viewer.component.css"],
 })
 export class ImageViewerComponent {
   constructor(private modalImageService: ModalImageService) {}
@@ -32,7 +32,10 @@ export class ImageViewerComponent {
 
   prevImage() {
     this.modalImageService.imgIndex =
-      (this.modalImageService.imgIndex - 1 + this.modalImageService.img.length) % this.modalImageService.img.length;
+      (this.modalImageService.imgIndex -
+        1 +
+        this.modalImageService.img.length) %
+      this.modalImageService.img.length;
   }
 
   closeModal() {
