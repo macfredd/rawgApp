@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ModalImageService {
   private _hideModal: boolean = true;
@@ -13,7 +13,6 @@ export class ModalImageService {
   }
 
   showModal(img: string[] | string, index: number = 0) {
-
     console.log(img);
     if (Array.isArray(img)) {
       this.img = img;

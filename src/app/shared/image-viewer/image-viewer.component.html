@@ -1,21 +1,32 @@
-<div [class.modal]="true" [class.show]="!hideModal" tabindex="-1" >
+<div [class.modal]="true" [class.show]="!hideModal" tabindex="-1">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Image Viewer</h5>
-        <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+        <button
+          type="button"
+          class="close"
+          (click)="closeModal()"
+          aria-label="Close"
+        >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <img [src]="image" alt="image" class="img-fluid">
+        <img [src]="image" alt="image" class="img-fluid" />
       </div>
       <div class="modal-footer">
         @if (imageList.length > 1) {
-          <button (click)="prevImage()" type="button" class="btn btn-primary">Previous</button>
-          <button (click)="nextImage()" type="button" class="btn btn-primary">Next</button>
+          <button (click)="prevImage()" type="button" class="btn btn-primary">
+            Previous
+          </button>
+          <button (click)="nextImage()" type="button" class="btn btn-primary">
+            Next
+          </button>
         }
-        <button (click)="closeModal()" type="button" class="btn btn-default">Close</button>
+        <button (click)="closeModal()" type="button" class="btn btn-default">
+          Close
+        </button>
       </div>
     </div>
   </div>
