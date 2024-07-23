@@ -10,11 +10,13 @@
           <div class="col-lg-2">
             <div class="card bg-dark g-0">
               <a [routerLink]="['game', game.id]">
-                <img
-                  src="{{ game.background_image }}"
-                  class="card-img-top"
-                  alt="{{ game.name }}"
-                />
+                <div class="aspect-ratio-container container-hover">
+                  <img
+                    src="{{ game.background_image }}"
+                    class="card-img-top d-block w-100"
+                    alt="{{ game.name }}"
+                  />
+                </div>
               </a>
               <div class="card-body text-white">
                 <h5 class="card-title">{{ game.name }}</h5>

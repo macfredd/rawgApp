@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { GamesService } from "../../services/games.service";
 import { GenresService } from "../../services/genres.service";
 import { forkJoin, map, switchMap, tap } from "rxjs";
+import { DatesService } from "../../services/dates.service";
 
 @Component({
   selector: "app-dashboard",
@@ -10,36 +11,21 @@ import { forkJoin, map, switchMap, tap } from "rxjs";
 })
 export class DashboardComponent implements OnInit {
   public bestGamesLastMonth: any[] = [];
-  public nextWeekGames: any[] = [];
+  public FuturesGames: any[] = [];
   public bestGamesByGenre: any[] = [];
-
-  //Dates
-  public currentDate: Date = new Date();
-  public lastMonth: Date;
-  public nextWeek: Date;
 
   isLoading: boolean = true;
 
   constructor(
     private gameService: GamesService,
-    private genreService: GenresService
-  ) {
-    this.lastMonth = new Date(
-      this.currentDate.getFullYear(),
-      this.currentDate.getMonth() - 1,
-      this.currentDate.getDate()
-    );
-    this.nextWeek = new Date(
-      this.currentDate.getFullYear(),
-      this.currentDate.getMonth(),
-      this.currentDate.getDate() + 30
-    );
-  }
+    private genreService: GenresService,
+    private dateService: DatesService
+  ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
     this.fillBestGamesLastMonth();
-    this.fillNextWeekGames();
+    this.fillFuturesGames();
     this.fillBestGamesByGenre();
     this.isLoading = false;
   }
@@ -48,8 +34,8 @@ export class DashboardComponent implements OnInit {
     this.gameService
       .getBestGamesByDateRange(
         3,
-        this.formatDate(this.lastMonth),
-        this.formatDate(this.currentDate)
+        this.dateService.formatDate(this.dateService.getDates().lastMonth),
+        this.dateService.formatDate(this.dateService.currentDate)
       )
       .subscribe((games: any[]) => {
         console.log(games);
@@ -57,15 +43,15 @@ export class DashboardComponent implements OnInit {
       });
   }
 
-  private fillNextWeekGames(): void {
+  private fillFuturesGames(): void {
     this.gameService
       .getBestGamesByDateRange(
         0,
-        this.formatDate(this.currentDate),
-        this.formatDate(this.nextWeek)
+        this.dateService.formatDate(this.dateService.currentDate),
+        this.dateService.formatDate(this.dateService.getDates().future(60))
       )
       .subscribe((games: any[]) => {
-        this.nextWeekGames = games;
+        this.FuturesGames = games;
       });
   }
 
@@ -83,8 +69,10 @@ export class DashboardComponent implements OnInit {
             this.gameService
               .getBestGamesByDateRangeAndGenre(
                 0,
-                this.formatDate(this.lastMonth),
-                this.formatDate(this.currentDate),
+                this.dateService.formatDate(
+                  this.dateService.getDates().last6Months
+                ),
+                this.dateService.formatDate(this.dateService.currentDate),
                 genre.id
               )
               .pipe(
@@ -101,10 +89,13 @@ export class DashboardComponent implements OnInit {
         })
       )
       .subscribe((results: any) => {
-        this.bestGamesByGenre = results
-          .filter((result: any) => result.games.length > 1);
+        this.bestGamesByGenre = results.filter(
+          (result: any) => result.games.length > 1
+        );
 
-          this.bestGamesByGenre = this.gameService.cleanGames(this.bestGamesByGenre);
+        this.bestGamesByGenre = this.gameService.cleanGames(
+          this.bestGamesByGenre
+        );
       });
   }
 
@@ -114,9 +105,5 @@ export class DashboardComponent implements OnInit {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
-  }
-
-  private formatDate(date: Date): string {
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
   }
 }

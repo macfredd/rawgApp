@@ -107,9 +107,7 @@ export class GamesService {
       ...result,
       games: result.games.filter(
         (game: any) =>
-          !game.tags.some((tag: any) =>
-            tag.name.toLowerCase().includes("sex")
-          )
+          !game.tags.some((tag: any) => tag.name.toLowerCase().includes("sex"))
       ),
     }));
   }
