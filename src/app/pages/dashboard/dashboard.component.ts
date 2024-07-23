@@ -47,11 +47,12 @@ export class DashboardComponent implements OnInit {
   private fillBestGamesLastMonth(): void {
     this.gameService
       .getBestGamesByDateRange(
-        4,
+        3,
         this.formatDate(this.lastMonth),
         this.formatDate(this.currentDate)
       )
       .subscribe((games: any[]) => {
+        console.log(games);
         this.bestGamesLastMonth = games.slice(0, 3);
       });
   }
@@ -101,16 +102,9 @@ export class DashboardComponent implements OnInit {
       )
       .subscribe((results: any) => {
         this.bestGamesByGenre = results
-          .filter((result: any) => result.games.length > 1)
-          .map((result: any) => ({
-            ...result,
-            games: result.games.filter(
-              (game: any) =>
-                !game.tags.some((tag: any) =>
-                  tag.name.toLowerCase().includes("sex")
-                )
-            ),
-          }));
+          .filter((result: any) => result.games.length > 1);
+
+          this.bestGamesByGenre = this.gameService.cleanGames(this.bestGamesByGenre);
       });
   }
 

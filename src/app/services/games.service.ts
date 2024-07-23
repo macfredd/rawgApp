@@ -96,4 +96,21 @@ export class GamesService {
       `${environment.apiUrl}/games?page_size=${page_size}&search=${query}&page=1`
     );
   }
+
+  /**
+   * Remove games with tags that contain some specific words
+   * @param games
+   * @returns
+   */
+  cleanGames(games: any[]): any[] {
+    return games.map((result: any) => ({
+      ...result,
+      games: result.games.filter(
+        (game: any) =>
+          !game.tags.some((tag: any) =>
+            tag.name.toLowerCase().includes("sex")
+          )
+      ),
+    }));
+  }
 }
