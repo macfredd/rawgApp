@@ -4,7 +4,7 @@
       [games]="bestGamesLastMonth"
       style="height: auto"
     ></app-carousel>
-    <app-grid title="Upcoming Games" [games]="nextWeekGames"></app-grid>
+    <app-grid title="Upcoming Games" [games]="FuturesGames"></app-grid>
 
     @for (genre of bestGamesByGenre; track $index) {
       <app-strip
