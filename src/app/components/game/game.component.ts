@@ -10,6 +10,7 @@ import { ModalImageService } from "../../services/modal-image.service";
 })
 export class GameComponent {
   public game: any = {};
+  public gameAchievements: any[] = [];
   public screenshots: any[] = [];
   public ratings: any[] = [];
   public platforms: any[] = [];
@@ -26,6 +27,7 @@ export class GameComponent {
       const gameId = params["id"];
       this.getGameById(gameId);
       this.getGameScreenshots(gameId);
+      this.getGameAchievements(gameId);
     });
   }
 
@@ -45,6 +47,13 @@ export class GameComponent {
   getGameScreenshots(id: number) {
     this.gamesService.getGamePhotos(id).subscribe((screenshots: any) => {
       this.screenshots = screenshots.results;
+    });
+  }
+
+  getGameAchievements(id: number) {
+    this.gamesService.getGameAchievements(id).subscribe((achievements: any) => {
+      this.gameAchievements = achievements.results;
+      console.log(this.gameAchievements);
     });
   }
 

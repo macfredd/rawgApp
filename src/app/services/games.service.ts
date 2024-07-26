@@ -35,6 +35,12 @@ export class GamesService {
     return this.httpClient.get(`${environment.apiUrl}/games/${id}/additions`);
   }
 
+  getGameAchievements(id: number) {
+    return this.httpClient.get(
+      `${environment.apiUrl}/games/${id}/achievements`
+    );
+  }
+
   /**
    * Get the game series of a game
    * @param id Game id
