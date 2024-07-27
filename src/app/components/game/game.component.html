@@ -122,54 +122,59 @@
     </div>
   </section>
 
-  <section class="p-2 p-lg-0 pt-lg-5 text-center text-sm-start">
-    <div class="d-sm-flex align-items-center justify-content-between">
-      <div>
-        <h1>Game <span class="text-warning">Screenshots</span></h1>
-        <div class="lead p-4">
-          <div class="row">
-            @for (screenshot of screenshots; track $index) {
-              <div class="col-12 col-md-6 col-lg-4 mb-4">
-                <img
-                  (click)="showModal(screenshots, $index)"
-                  class="img-fluid rounded pointer"
-                  src="{{ screenshot.image }}"
-                  alt=""
-                />
-              </div>
-            }
+  @if(screenshots.length > 0) {
+    <section class="p-2 p-lg-0 pt-lg-5 text-center text-sm-start">
+      <div class="d-sm-flex align-items-center justify-content-between">
+        <div>
+          <h1>Game <span class="text-warning">Screenshots</span></h1>
+          <div class="lead p-4">
+            <div class="row">
+              @for (screenshot of screenshots; track $index) {
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                  <img
+                    (click)="showModal(screenshots, $index)"
+                    class="img-fluid rounded pointer"
+                    src="{{ screenshot.image }}"
+                    alt=""
+                  />
+                </div>
+              }
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  }
 
-  <section class="p-2 p-lg-0 pt-lg-5 text-center text-sm-start">
-    <div class="align-items-center justify-content-between">
-      <div>
-        <h1>Game <span class="text-warning">Achivements</span></h1>
-        <div class="lead p-4">
-          <div class="row">
-            @for (achivement of gameAchievements; track $index) {
-              <div class="card shadow mb-4 col-lg-3">
-                <div class="card-body">
-                  <div
-                    class="card text-white" style="background-color: black;"
-                  >
-                    <img class="card-img-top" src="{{ achivement.image}}" alt="Title" />
+  @if(gameAchievements.length > 0) {
+    <section class="p-2 p-lg-0 pt-lg-5 text-center text-sm-start">
+      <div class="align-items-center justify-content-between">
+        <div>
+          <h1>Game <span class="text-warning">Achievements</span></h1>
+          <div class="lead p-4">
+            <div class="row">
+              @for (achivement of gameAchievements; track $index) {
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 col-xxl-3 mb-4">
+                  <div class="card shadow custom-card">
                     <div class="card-body">
-                      <h5 class="card-title">{{ achivement.name }}</h5>
-                      <p class="card-text lead">{{ achivement.description }}</p>
+                      <div class="card text-white" style="background-color: black;">
+                        <img class="card-img-top" src="{{ achivement.image }}" alt="Title" />
+                        <div class="card-body d-flex flex-column justify-content-end">
+                          <h5 class="card-title">{{ achivement.name }}</h5>
+                          <p class="card-text lead d-none d-lg-block">{{ achivement.description }}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            }
+              }
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+}
+
 
 
 
