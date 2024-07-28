@@ -1,0 +1,40 @@
+.custom-card {
+    position: relative;
+    overflow: hidden;
+    padding-top: 125%; /* Proporción 1:3 (alto:ancho) */
+  }
+
+  .custom-card .card-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .custom-card .card-img-top {
+    height: auto;
+    width: 100%;
+  }
+
+  .custom-card .card-body .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .custom-card .card-body .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+@media (min-width: 1440px) {
+    .col-xxl-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+}
