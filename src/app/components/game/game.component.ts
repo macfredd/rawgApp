@@ -53,7 +53,6 @@ export class GameComponent {
   getGameAchievements(id: number) {
     this.gamesService.getGameAchievements(id).subscribe((achievements: any) => {
       this.gameAchievements = achievements.results;
-      console.log(this.gameAchievements);
     });
   }
 

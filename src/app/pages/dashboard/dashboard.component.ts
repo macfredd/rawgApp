@@ -38,7 +38,6 @@ export class DashboardComponent implements OnInit {
         this.dateService.formatDate(this.dateService.currentDate)
       )
       .subscribe((games: any[]) => {
-        console.log(games);
         this.bestGamesLastMonth = games.slice(0, 3);
       });
   }
