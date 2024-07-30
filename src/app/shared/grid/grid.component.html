@@ -7,8 +7,8 @@
 
       <div class="row">
         @for (game of games; track $index) {
-          <div class="col-lg-2">
-            <div class="card bg-dark g-0">
+          <div class="col-lg-2 mb-3 d-flex">
+            <div class="card bg-dark g-0 d-flex flex-column w-100">
               <a [routerLink]="['game', game.id]">
                 <div class="aspect-ratio-container container-hover">
                   <img
@@ -18,23 +18,26 @@
                   />
                 </div>
               </a>
-              <div class="card-body text-white">
-                <h5 class="card-title">{{ game.name }}</h5>
-                <p>
-                  @for (plataform of game.parent_platforms; track $index) {
-                    <img
-                      class="plataform-icon-small m-2 text-dark"
-                      src="assets/svg/{{ plataform.platform.slug }}.svg"
-                      tooltip
-                      alt="{{ plataform.platform.slug }}"
-                    />
-                  }
-                </p>
+              <div class="card-body text-white d-flex flex-column justify-content-between">
+                <div>
+                  <h5 class="card-title">{{ game.name }}</h5>
+                  <p>
+                    @for (plataform of game.parent_platforms; track $index) {
+                      <img
+                        class="plataform-icon-small m-2 text-dark"
+                        src="assets/svg/{{ plataform.platform.slug }}.svg"
+                        tooltip
+                        alt="{{ plataform.platform.slug }}"
+                      />
+                    }
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         }
       </div>
+      
     }
   </div>
 </section>
