@@ -19,16 +19,16 @@ export class GridComponent implements OnChanges {
 
   constructor(private checkImagePipe: CheckImagePipe) {}
 
-  ngOnInit(): void {
-    this.games.forEach((game) => {
-      this.checkImagePipe.transform(game.background_image).then((url) => {
-        game.safeImageUrl = url;
-      });
-    });
-  }
-
   ngOnChanges() {
     if (this.games && this.games.length > 0) {
+
+      this.games.forEach((game) => {
+        this.checkImagePipe.transform(game.background_image).then((url) => {
+          console.log(url);
+          game.safeImageUrl = url;
+        });
+      });
+
       this.isLoading = false;
     }
   }
