@@ -14,7 +14,7 @@
               <a [routerLink]="['game', game.id]">
                 <div class="aspect-ratio-container container-hover">
                   <img
-                    src="{{ game.background_image }}"
+                    [src]="game.safeImageUrl"
                     class="d-block w-100"
                     alt="{{ game.name }}"
                   />

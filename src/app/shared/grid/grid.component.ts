@@ -24,7 +24,6 @@ export class GridComponent implements OnChanges {
 
       this.games.forEach((game) => {
         this.checkImagePipe.transform(game.background_image).then((url) => {
-          console.log(url);
           game.safeImageUrl = url;
         });
       });
