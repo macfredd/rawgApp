@@ -47,7 +47,7 @@ export class DashboardComponent implements OnInit {
       .getBestGamesByDateRange(
         0,
         this.dateService.formatDate(this.dateService.currentDate),
-        this.dateService.formatDate(this.dateService.getDates().future(60))
+        this.dateService.formatDate(this.dateService.getDates().future(100))
       )
       .subscribe((games: any[]) => {
         this.FuturesGames = games;
