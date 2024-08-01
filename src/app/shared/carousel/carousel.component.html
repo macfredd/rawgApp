@@ -15,46 +15,41 @@
               <img
                 class="img-fluid"
                 [src]="game.background_image"
-                class="d-block h-50 w-100"
+                class="d-block w-100"
                 alt="..."
               />
             </a>
-            <div
-              class="carousel-bs"
-              [ngStyle]="{ 'background-color': '#' + game.dominant_color }"
-            >
-              <div class="row">
-                <div class="position-absolute top-right">
-                  <span
-                    class="badge bg-danger text-white"
-                    style="font-size: 1.5rem"
-                  >
-                    Rating: {{ game.rating }}
-                  </span>
-                </div>
-                <div class="col m-2 text-center">
-                  <h1>{{ game.name }}</h1>
-                  <p class="lead">Released: {{ game.released }}</p>
-                  <p>
-                    @for (genre of game.genres; track $index) {
-                      <span
-                        class="badge badge-success m-2"
-                        style="font-size: 1.5rem"
-                        >{{ genre.name }}</span
-                      >
-                    }
-                  </p>
-                  <p>
-                    @for (plataform of game.parent_platforms; track $index) {
-                      <img
-                        class="plataform-icon m-2"
-                        src="assets/svg/{{ plataform.platform.slug }}.svg"
-                        alt=""
-                        style="object-fit: fill"
-                      />
-                    }
-                  </p>
-                </div>
+            <div class="carousel-bs">
+              <div class="position-absolute top-right">
+                <span
+                  class="badge bg-danger text-white"
+                  style="font-size: 1.5rem"
+                >
+                  Rating: {{ game.rating }}
+                </span>
+              </div>
+              <div class="col m-2 text-center">
+                <h1>{{ game.name }}</h1>
+                <p class="lead">Released: {{ game.released }}</p>
+                <p>
+                  @for (genre of game.genres; track $index) {
+                    <span
+                      class="badge badge-success m-2"
+                      style="font-size: 1.5rem"
+                      >{{ genre.name }}</span
+                    >
+                  }
+                </p>
+                <p>
+                  @for (plataform of game.parent_platforms; track $index) {
+                    <img
+                      class="plataform-icon m-2"
+                      src="assets/svg/{{ plataform.platform.slug }}.svg"
+                      alt=""
+                      style="object-fit: fill"
+                    />
+                  }
+                </p>
               </div>
             </div>
           </div>

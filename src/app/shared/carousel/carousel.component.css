@@ -1,6 +1,9 @@
 .carousel-item {
   height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
+
 .carousel-item img {
   height: 100%;
   width: 100%;
@@ -9,7 +12,24 @@
 }
 
 .top-right {
+  position: absolute;
   top: 20px;
   right: 5px;
-  transform: translateY(-50%);
+}
+
+.carousel-bs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+}
+
+.carousel-bs .badge {
+  font-size: 1.5rem;
 }
