@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { CheckImagePipe } from "../../pipes/checkimage.pipe";
 
 @Component({
   selector: "app-grid",
@@ -12,10 +13,21 @@ export class GridComponent implements OnChanges {
   @Input() secondaryCOlor: string = "gray";
   @Input() SectionBgImg: string = "";
 
+  safeImageUrl: any;
+
   isLoading: boolean = true;
+
+  constructor(private checkImagePipe: CheckImagePipe) {}
 
   ngOnChanges() {
     if (this.games && this.games.length > 0) {
+
+      this.games.forEach((game) => {
+        this.checkImagePipe.transform(game.background_image).then((url) => {
+          game.safeImageUrl = url;
+        });
+      });
+
       this.isLoading = false;
     }
   }

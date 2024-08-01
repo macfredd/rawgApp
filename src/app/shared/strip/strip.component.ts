@@ -1,17 +1,29 @@
-import { AfterViewInit, Component, Input, OnInit } from "@angular/core";
+import { AfterViewInit, Component, Input, OnChanges, OnInit } from "@angular/core";
+import { CheckImagePipe } from "../../pipes/checkimage.pipe";
 
 @Component({
   selector: "app-strip",
   templateUrl: "./strip.component.html",
   styleUrl: "./strip.component.css",
 })
-export class StripComponent implements AfterViewInit, OnInit {
+export class StripComponent implements AfterViewInit, OnInit, OnChanges {
   @Input() title: string = "Title Section";
   @Input() games: any[] = [];
 
-  constructor() {}
+  constructor(private checkImagePipe: CheckImagePipe) {}
 
   ngOnInit(): void {}
+
+  ngOnChanges() {
+    if (this.games && this.games.length > 0) {
+      this.games.forEach((game) => {
+        this.checkImagePipe.transform(game.background_image).then((url) => {
+          console.log(url)
+          game.safeImageUrl = url;
+        });
+      });
+    }
+  }
 
   ngAfterViewInit(): void {
     $("#continuousCarousel").on("slide.bs.carousel", (e: any) => {

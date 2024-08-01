@@ -11,11 +11,11 @@ import {
   withInterceptorsFromDi,
 } from "@angular/common/http";
 import { addApiKeyInterceptor } from "./interceptors/add-api-key.interceptor";
-import { BarHComponent } from "./components/graphs/bar-h/bar-h.component";
 import { RouterModule } from "@angular/router";
+import { CheckImagePipe } from "./pipes/checkimage.pipe";
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CheckImagePipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +26,7 @@ import { RouterModule } from "@angular/router";
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     provideHttpClient(withInterceptors([addApiKeyInterceptor])),
+    CheckImagePipe,
   ],
   bootstrap: [AppComponent],
 })

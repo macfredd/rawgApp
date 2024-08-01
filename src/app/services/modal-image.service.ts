@@ -13,7 +13,6 @@ export class ModalImageService {
   }
 
   showModal(img: string[] | string, index: number = 0) {
-    console.log(img);
     if (Array.isArray(img)) {
       this.img = img;
     } else {
