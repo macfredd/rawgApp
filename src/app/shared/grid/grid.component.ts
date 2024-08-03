@@ -21,7 +21,6 @@ export class GridComponent implements OnChanges {
 
   ngOnChanges() {
     if (this.games && this.games.length > 0) {
-
       this.games.forEach((game) => {
         this.checkImagePipe.transform(game.background_image).then((url) => {
           game.safeImageUrl = url;

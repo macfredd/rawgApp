@@ -6,6 +6,10 @@
     ></app-carousel>
     <app-grid title="Upcoming Games" [games]="FuturesGames"></app-grid>
 
+    <div class="custom-title-container">
+      <h1 class="custom-title">Games by Category</h1>
+    </div>
+
     @for (genre of bestGamesByGenre; track $index) {
       <app-strip
         title="{{ genre.genre_name }}"

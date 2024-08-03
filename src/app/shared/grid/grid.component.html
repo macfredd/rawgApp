@@ -1,8 +1,8 @@
 <section style="position: relative">
   <div style="position: relative; z-index: 1">
     @if (!isLoading) {
-      <div class="row">
-        <h1 class="text-center">{{ title }}</h1>
+      <div class="custom-title-container">
+        <h1 class="custom-title">{{ title }}</h1>
       </div>
 
       <div class="row">
@@ -18,7 +18,9 @@
                   />
                 </div>
               </a>
-              <div class="card-body text-white d-flex flex-column justify-content-between">
+              <div
+                class="card-body text-white d-flex flex-column justify-content-between"
+              >
                 <div>
                   <h5 class="card-title">{{ game.name }}</h5>
                   <p>
@@ -37,7 +39,6 @@
           </div>
         }
       </div>
-      
     }
   </div>
 </section>
