@@ -5,26 +5,26 @@
 .card-gradient {
   background: linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.9),
-      rgba(255, 255, 255, 0.1)
+      rgba(219, 215, 215, 0.9),
+      rgba(43, 42, 42, 0.1)
     ),
     linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.1)
+      rgba(144, 140, 140, 0.5),
+      rgba(90, 92, 105, 0.1)
     ),
     linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0.1)
+      rgba(145, 140, 140, 0.6),
+      rgba(91, 140, 140, 0.1)
     ),
     linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.7),
-      rgba(255, 255, 255, 0.1)
+      rgba(43, 42, 42, 0.7),
+      rgba(90, 92, 105, 0.1)
     );
 
-  box-shadow: 0 0 1000px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 1000px rgba(43, 42, 42, 0.7);
   border-radius: 0;
   border: none;
   height: 100%;
@@ -34,6 +34,7 @@
   background-size: cover;
   background-position: center;
 }
+
 
 .pre-wrap {
   white-space: pre-wrap;
@@ -77,7 +78,7 @@
 
 /* CUSTOM TITLES BEGIN*/
 .custom-title-container {
-  background: linear-gradient(to right, #4a90e2, #9013fe);
+  background: linear-gradient(to right, #dbd7d7, #918c8c);
   padding: 20px;
   position: relative;
   overflow: hidden;
