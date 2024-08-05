@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+} from "@angular/core";
 import { CheckImagePipe } from "../../pipes/checkimage.pipe";
 
 @Component({
@@ -18,7 +24,6 @@ export class StripComponent implements AfterViewInit, OnInit, OnChanges {
     if (this.games && this.games.length > 0) {
       this.games.forEach((game) => {
         this.checkImagePipe.transform(game.background_image).then((url) => {
-          console.log(url)
           game.safeImageUrl = url;
         });
       });
